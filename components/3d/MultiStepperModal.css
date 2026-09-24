@@ -1,0 +1,62 @@
+.multi-stepper-modal {
+    position: relative;
+    background: white;
+    width: 320px;
+    height: fit-content;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    right: 20px;
+    bottom: 20px;
+    transform: translateX(0);
+    /* Ensures no overflow */
+    transition: all 0.3s ease-in-out;
+    justify-content: right;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.option-button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f0f8ff;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.option-button:hover {
+    background-color: #d1e7ff;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.stepper-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.stepper-button:disabled {
+    background-color: #d3d3d3;
+    cursor: not-allowed;
+}
+
+.stepper-button:hover:not(:disabled) {
+    background-color: #0056b3;
+}

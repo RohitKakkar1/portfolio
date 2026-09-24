@@ -1,0 +1,44 @@
+.paragraph {
+  display: flex;
+  font-size: 40px;
+  line-height: 1.1;
+  padding: 40px;
+  max-width: 1280px;
+  color: black;
+  flex-wrap: wrap;
+
+  .word {
+    position: relative;
+    margin-right: 12px;
+    margin-top: 12px;
+
+    .shadow {
+      position: absolute;
+      opacity: 20%;
+    }
+  }
+
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 1024px) {
+  .paragraph {
+    font-size: 32px;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 768px) {
+  .paragraph {
+    font-size: 24px;
+    padding: 24px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .paragraph {
+    font-size: 18px;
+    padding: 16px;
+  }
+}

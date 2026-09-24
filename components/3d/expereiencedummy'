@@ -1,0 +1,77 @@
+import { Physics } from '@react-three/rapier'
+import useGame from './stores/useGame.jsx'
+import Lights from "@/components/3d/Lights.tsx"
+import { Level } from "@/components/3d/Level.tsx"
+import Player from './Player.jsx'
+import Orbit from './Orbit.jsx'
+import { Canvas } from "@react-three/fiber";
+import { Leva } from "leva";
+import Experience from "./Experience";
+import { useState } from "react";
+import { FaLocationArrow } from "react-icons/fa6";
+import { KeyboardControls, OrbitControls } from "@react-three/drei";
+import Interface from "./Interface";
+import { GizmoViewport } from "@react-three/drei";
+import { GizmoHelper } from "@react-three/drei";
+import { Grid } from "@react-three/drei";
+import Bubbles from "./Bubbles";
+import Link from "next/link";
+import Popups from "./Bubbles";
+import { FloatingDockDemo } from "./floatingdockDemo"
+import AccordionUsage from './accordion'
+import ModeToggleButton from "./modeToggle";
+import useCameraStore from './stores/usecamerastore';
+import useModeStore from './stores/usemodestore';
+import { PerspectiveCamera } from "@react-three/drei";
+import { useModalStore } from './stores/useModalStore.jsx'
+import { View } from '@react-three/drei'
+
+
+ const Scene = () => {
+          return <>
+
+             <Physics debug={false}>
+                      <Lights />
+                      <Level />
+                      <Player />
+                  </Physics>
+      </>
+}
+
+export default function Experience() {
+
+    const {isModalOpen} = useModalStore();
+
+    return <>
+
+        {/* <color args={['#FEFCF6']} attach="background" /> */}
+
+
+
+        <Canvas
+              shadows
+              camera={{
+                fov: 45,
+                near: 0.1,
+                far: 200,
+                position: [0, 50, 100], // Default camera position for play mode
+              }}
+              style={{ background: 'linear-gradient(180deg, #245792, #0A315F)' }}
+            >
+
+              <Leva hidden />
+
+               <Scene />  
+
+               <View.Port />
+
+
+              {/* <Popups /> */}
+        </Canvas>
+
+
+
+        
+
+    </>
+}

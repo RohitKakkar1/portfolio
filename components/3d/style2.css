@@ -1,0 +1,218 @@
+/* Master Panel on the Right */
+.master-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 230px;
+  /* Default width for desktop */
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  font-family: 'Arial', sans-serif;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* Add transition for smoother resizing */
+  transition: all 0.3s ease;
+
+}
+
+/* Section Styling */
+.section {
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 5px;
+}
+
+/* Controls Styling */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Center Alignment for Player Controls */
+.controls.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Vertically centers items */
+  gap: 3px;
+}
+
+.key.large {
+  width: 120px;
+  /* Wider for 'Space' key */
+  text-align: center;
+}
+
+/* Camera Movements Section Stays Default */
+.controls:not(.centered) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.controls:not(.centered) .row {
+  justify-content: flex-start;
+}
+
+/* Control Description Styling */
+.control-description {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 10px;
+  line-height: 40px;
+  /* Aligns text with key height */
+}
+
+/* Key Button */
+.key {
+  width: 40px;
+  height: 40px;
+  background-color: #34495e;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.key.large {
+  width: 80px;
+  height: 40px;
+}
+
+/* Active Key Effect */
+.key.active {
+  background-color: #1abc9c;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(26, 188, 156, 0.8);
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+
+  /* Master Panel adjustments */
+  .master-panel {
+    width: 100%;
+    /* Full width on mobile */
+    max-width: 100%;
+    /* Ensure it doesn't exceed screen width */
+    top: auto;
+    /* Remove the top positioning */
+    bottom: 0;
+    /* Position at the bottom */
+    left: 0;
+    /* Align it to the left edge */
+    right: 0;
+    /* Align it to the right edge */
+    padding: 15px;
+    /* Reduce padding */
+  }
+
+  .section h3 {
+    font-size: 16px;
+    /* Reduce font size for section titles */
+  }
+
+  .controls.centered {
+    align-items: flex-start;
+    /* Align controls to the left */
+  }
+
+  /* Control key size adjustments for mobile */
+  .key {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+
+  .key.large {
+    width: 70px;
+    /* Smaller space key on mobile */
+    height: 35px;
+  }
+
+  /* Make the description text smaller */
+  .control-description {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+}
+
+/* Extra Small Screens (mobile portrait) */
+@media screen and (max-width: 480px) {
+
+  /* Further reduce the panel size for very small screens */
+  .master-panel {
+    width: 100%;
+    /* Full width on very small screens */
+    padding: 10px;
+  }
+
+  /* Adjust font size and key size for very small screens */
+  .section h3 {
+    font-size: 14px;
+  }
+
+  .key {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+  }
+
+  .key.large {
+    width: 60px;
+    height: 30px;
+  }
+
+  .control-description {
+    font-size: 10px;
+    margin-left: 3px;
+  }
+}
+
+
+.close-panel {
+  position: absolute;
+  bottom: 20px;
+  /* Adjust this value to position the button further down */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.close-button {
+  padding: 10px 20px;
+  background-color: #f44336;
+  /* Red color for visibility */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: #d32f2f;
+}
