@@ -6,6 +6,8 @@
 
 Last updated: 2026-09-25
 
+> Related: **`DATA_SCIENCE_COURSE.md`** — full curriculum for the "Data Science, Visually" course (`/courses/data-science`).
+
 ---
 
 ## 1. Who this is for (bio / facts)
@@ -83,6 +85,10 @@ Status: **Frame locked. Copy = DRAFT pending real metrics (see §8).**
 | Route | Purpose | Status |
 |-------|---------|--------|
 | `/` | Homepage (the story) | 🟡 In progress (redesign) |
+| `/courses/data-science` | **Data Science course** landing (cover, purchase CTA, enrolment form, featured project + full curriculum) | 🟢 Built (Razorpay TBD; cover = placeholder) |
+| `/data-science/projects/world-happiness` | **Flagship data story** — "The Data of Happiness" (55-step scrollytelling on the World Happiness Report; hist/rank/scatter/line/heatmap/importance/actual-vs-predicted) | 🟢 Built (representative WHR sample data) |
+| `/data-science/kmeans` | **K-Means visual explainer** (r2d3-style pinned scrollytelling) | 🟢 Built |
+| `/data-science/[slug]` | **All ~24 course lessons** (ScrollyLesson + LessonViz engine, registry-driven) + legacy project stubs | 🟢 All lessons built (visuals to enrich; locking TBD) |
 | `/projects/jiocx-zone` | JioCX Zone case study | 🔴 Planned |
 | `/projects/jiocx-alerts` | JioCX Alerts case study | 🔴 Planned |
 | `/projects/archinza` | Archinza case study (Head of Product) | 🔴 Planned |
@@ -98,19 +104,24 @@ Legend: 🟢 done · 🟡 in progress · 🔴 planned · ⚪ legacy/exists
 
 ## 5. Homepage sections (current order & status)
 
-| # | Section | Component | Content | Status |
-|---|---------|-----------|---------|--------|
-| 1 | Hero | `sections/Hero3D.tsx` | Positioning ("build & grow…") + impact strip | 🟢 Built (metrics placeholder) |
-| 2 | About | `sections/About.tsx` + `ui/AnimatedImages.jsx` (isometric cubes) | "Builder & grower who understands people" + stat counters + chips | 🟢 Built (metrics placeholder) |
-| 3 | Archinza (flagship) | `sections/Archinza.tsx` | 1st-person Head of Product story, team of 6, AI-native beat; CTA → `/projects/archinza` | 🟢 Built (metrics `[X]` placeholder) |
-| 4 | ArchiVoice | `Word` + `ArchiVoice.tsx` | "I grew a 140k community" + wobble cards | 🟡 Copy updated; cards need real content |
-| 5 | Jio | `Word` + `JioWobble.tsx` | "I shipped at Jio" → Zone + Alerts | 🟡 Copy updated; cards→case studies pending |
-| 6 | Skills | `sections/Skills.tsx` | 3 disciplines | 🟢 Built (placeholder skills) |
-| 7 | Technical proof | `sections/ThreeDProjects.tsx` + `DataScienceProjects.tsx` | This 3D site + DS work | 🟢 Built (placeholder) |
-| 8 | Academic | `Word` + `wobbleCardDemo.tsx` | "Where I trained" (SPA Delhi, IIT Kanpur) | 🟡 Copy updated; cards need real content |
-| 9 | Contact | `Footer.tsx` + `signup-form-demo.tsx` | Contact form | 🟡 Real email + socials TBD |
+**Architecture: persona-driven.** Hero → **ExploreChooser** (Professional / Educator /
+Personal) → the chosen persona's content → Contact. About section was **removed**
+(redundant with the hero). State lives in `app/page.tsx` (`persona`), content swaps
+via `AnimatePresence`. Nav: **Explore · Contact**.
 
-> Order now matches the locked impact-first storyline (§2). Nav updated to: About · Archinza · ArchiVoice · Jio · Skills · Contact.
+| # | Section | Component | Persona | Status |
+|---|---------|-----------|---------|--------|
+| 1 | Hero | `sections/Hero3D.tsx` | all | 🟢 Built — positioning + impact strip + educator CTA (metrics placeholder) |
+| 2 | Explore chooser | `sections/ExploreChooser.tsx` | all | 🟢 Built — 3 persona buttons, default = Professional |
+| P1 | What I do | `sections/WhatIDo.tsx` | Professional | 🟢 Built — project grid (4 crafts) + skill chips (Flip link + DS project TBD) |
+| P2 | Professional Space (tabbed) | `sections/ProfessionalSpace.tsx` → `Archinza` / `JioStory`+`JioWobble` / `ArchiVoiceStory`+`ArchiVoice` | Professional | 🟢 Built — tabs Archinza · Jio · ArchiVoice (metrics `[X]`) |
+| P3 | Technical proof | `sections/ThreeDProjects.tsx` + `DataScienceProjects.tsx` | Professional | 🟢 Built (placeholder) |
+| P4 | Academic | `Word` + `wobbleCardDemo.tsx` | Professional | 🟡 "Where I trained"; cards need real content |
+| E1 | Educator | `sections/Educator.tsx` | Educator | 🟢 Built — teaching/mentorship (placeholder metrics + offerings) |
+| PR1 | Personal | `sections/Personal.tsx` | Personal | 🟢 Built — Kanpur story + interests (placeholder) |
+| 3 | Contact | `Footer.tsx` + `signup-form-demo.tsx` | all | 🟡 Real email + socials TBD |
+
+> Unused now: `sections/About.tsx`, `sections/Skills.tsx` (merged/removed) — kept in repo but not imported.
 
 ---
 

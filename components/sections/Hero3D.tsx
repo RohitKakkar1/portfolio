@@ -12,7 +12,7 @@ import { Physics, RigidBody } from "@react-three/rapier";
 import { useGLTF } from "@react-three/drei";
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "@/components/ui/icons";
+import { ArrowRight, ArrowUpRight, GraduationCap } from "@/components/ui/icons";
 
 function DynamicPlanes() {
   const viewport = useThree((state) => state.viewport);
@@ -184,7 +184,6 @@ function HeroOverlay() {
         <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
           {[
             { stat: "140k", label: "Community grown" },
-            { stat: "Team of 6", label: "Product · Design · Tech · Marketing" },
             { stat: "3", label: "Products shipped" },
           ].map((m) => (
             <div key={m.label}>
@@ -195,6 +194,23 @@ function HeroOverlay() {
             </div>
           ))}
         </div>
+
+        {/* Educator CTA */}
+        <a
+          href="#contact"
+          className="group mt-8 inline-flex max-w-xl items-center gap-3 rounded-xl border border-purple/50 bg-purple/10 px-4 py-3 text-sm text-black-100 backdrop-blur transition-transform hover:-translate-y-0.5"
+        >
+          <GraduationCap size={22} className="shrink-0 text-purple" />
+          <span>
+            I&apos;m also an <span className="font-semibold">educator</span> — if
+            you&apos;re a student or professional seeking help,{" "}
+            <span className="font-semibold text-purple">reach out</span>.
+          </span>
+          <ArrowRight
+            size={16}
+            className="shrink-0 transition-transform group-hover:translate-x-0.5"
+          />
+        </a>
       </motion.div>
     </div>
   );

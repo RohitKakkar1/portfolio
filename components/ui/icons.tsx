@@ -83,3 +83,15 @@ export const Link = (p: IconProps) => base({ ...p, children: (
 export const Compass = (p: IconProps) => base({ ...p, children: (
   <><circle cx="12" cy="12" r="10" /><path d="m16.2 7.8-2.9 6.3-6.3 2.9 2.9-6.3z" /></>
 ) });
+
+export const GraduationCap = (p: IconProps) => base({ ...p, children: (
+  <><path d="M22 10 12 5 2 10l10 5 10-5Z" /><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5" /></>
+) });
+
+export const Heart = (p: IconProps) => base({ ...p, children: (
+  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+) });
+
+export const Briefcase = (p: IconProps) => base({ ...p, children: (
+  <><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></>
+) });

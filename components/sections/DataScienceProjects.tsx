@@ -1,45 +1,12 @@
 "use client";
 
-// Data Science projects section. Placeholder project cards — replace the
-// `projects` array (title, description, tags, links, image) with real work.
-// Each card links out to a repo / live demo via internal SVG icons.
+// Data Science projects section — cards link to per-project pages at
+// /data-science/[slug]. The K-Means card is the flagship (visual explainer).
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Github, ArrowUpRight, ChartBar } from "@/components/ui/icons";
-
-type Project = {
-  title: string;
-  description: string;
-  tags: string[];
-  repo?: string;
-  demo?: string;
-};
-
-const projects: Project[] = [
-  {
-    title: "Customer Churn Prediction",
-    description:
-      "Placeholder: gradient-boosted model predicting churn with an interpretable feature dashboard.",
-    tags: ["Python", "XGBoost", "SHAP"],
-    repo: "#",
-    demo: "#",
-  },
-  {
-    title: "Urban Mobility Analysis",
-    description:
-      "Placeholder: spatial analysis of transit flows to surface underserved corridors in a city.",
-    tags: ["GeoPandas", "Clustering", "Folium"],
-    repo: "#",
-  },
-  {
-    title: "Design-Trend NLP Explorer",
-    description:
-      "Placeholder: topic modelling over architecture/design articles to map emerging themes.",
-    tags: ["NLP", "Transformers", "Streamlit"],
-    repo: "#",
-    demo: "#",
-  },
-];
+import { ArrowUpRight, ChartBar, Sparkles } from "@/components/ui/icons";
+import { dsProjects } from "@/data/dataScience";
 
 const DataScienceProjects = () => {
   return (
@@ -56,60 +23,90 @@ const DataScienceProjects = () => {
             Data Science <span className="text-purple">Projects</span>
           </h2>
           <p className="mx-auto max-w-2xl text-sm text-neutral-600 md:text-base">
-            Experiments and models where I let the data lead. (Placeholder
-            projects — real ones coming soon.)
+            Experiments and models where I let the data lead.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p, i) => (
-            <motion.article
-              key={p.title}
+          {dsProjects.map((p, i) => (
+            <motion.div
+              key={p.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group flex flex-col rounded-2xl border border-black/5 bg-gray-100 p-6 transition-shadow hover:shadow-lg"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className={p.flagship ? "sm:col-span-2 lg:col-span-1" : ""}
             >
-              {/* Placeholder visual band */}
-              <div className="mb-5 h-32 w-full rounded-xl bg-gradient-to-br from-purple/70 via-indigo-400 to-cyan-300" />
+              <Link
+                href={`/data-science/${p.slug}`}
+                className={`group flex h-full flex-col rounded-2xl border p-6 transition-shadow hover:shadow-lg ${
+                  p.flagship
+                    ? "border-purple/40 bg-black-100 text-white"
+                    : "border-black/5 bg-gray-100"
+                }`}
+              >
+                {/* Visual band */}
+                <div
+                  className={`mb-5 h-32 w-full rounded-xl ${
+                    p.flagship
+                      ? "bg-gradient-to-br from-purple via-indigo-500 to-cyan-400"
+                      : "bg-gradient-to-br from-purple/70 via-indigo-400 to-cyan-300"
+                  }`}
+                />
 
-              <h3 className="text-lg font-semibold text-black-200">{p.title}</h3>
-              <p className="mt-2 flex-1 text-sm text-neutral-600">
-                {p.description}
-              </p>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {p.tags.map((t) => (
+                <div className="mb-1 flex items-center gap-2">
                   <span
-                    key={t}
-                    className="rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-neutral-700"
+                    className={`text-[10px] font-semibold uppercase tracking-widest ${
+                      p.flagship ? "text-purple" : "text-purple"
+                    }`}
                   >
-                    {t}
+                    {p.tag}
                   </span>
-                ))}
-              </div>
+                  {p.flagship && (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-purple/20 px-2 py-0.5 text-[10px] font-medium text-purple">
+                      <Sparkles size={11} /> Featured
+                    </span>
+                  )}
+                </div>
 
-              <div className="mt-5 flex items-center gap-4 border-t border-black/5 pt-4 text-sm">
-                {p.repo && (
-                  <a
-                    href={p.repo}
-                    className="inline-flex items-center gap-1.5 text-neutral-700 hover:text-black-100"
-                  >
-                    <Github size={16} /> Code
-                  </a>
-                )}
-                {p.demo && (
-                  <a
-                    href={p.demo}
-                    className="inline-flex items-center gap-1.5 text-neutral-700 hover:text-black-100"
-                  >
-                    Demo <ArrowUpRight size={16} />
-                  </a>
-                )}
-              </div>
-            </motion.article>
+                <h3
+                  className={`text-lg font-semibold ${
+                    p.flagship ? "text-white" : "text-black-200"
+                  }`}
+                >
+                  {p.title}
+                </h3>
+                <p
+                  className={`mt-2 flex-1 text-sm ${
+                    p.flagship ? "text-white/70" : "text-neutral-600"
+                  }`}
+                >
+                  {p.blurb}
+                </p>
+
+                <span
+                  className={`mt-4 inline-flex items-center gap-1.5 text-sm font-medium ${
+                    p.flagship ? "text-white" : "text-black-100"
+                  }`}
+                >
+                  {p.flagship ? "Explore the visual" : "View project"}{" "}
+                  <ArrowUpRight
+                    size={16}
+                    className="transition-transform group-hover:translate-x-0.5"
+                  />
+                </span>
+              </Link>
+            </motion.div>
           ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link
+            href="/courses/data-science"
+            className="inline-flex items-center gap-2 rounded-lg bg-black-100 px-6 py-3 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
+          >
+            Explore the Data Science course <ArrowUpRight size={18} />
+          </Link>
         </div>
       </div>
     </section>

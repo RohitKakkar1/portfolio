@@ -30,7 +30,7 @@ const Archinza = () => {
   return (
     <section
       id="archinza"
-      className="flex w-full justify-center px-4 py-16 md:px-6 md:py-24"
+      className="flex w-full justify-center px-4 pb-8 pt-4 md:px-6 md:pb-10 md:pt-6"
     >
       <div className="w-full max-w-7xl rounded-3xl bg-black-100 text-white">
         <div className="grid grid-cols-1 gap-10 p-8 md:grid-cols-2 md:p-14">
